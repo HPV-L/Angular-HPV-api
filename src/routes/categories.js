@@ -1,12 +1,9 @@
-import express from 'express';
 import { create, get, getAll, remove, update } from '../controller/categories'
 import { checkPermission } from '../middlewares/checkPermission';
+import express from 'express';
 
 const router = express.Router();
-router.get("/categories",getAll)
-router.get("/categories/:id", get)
-router.post("/categories",checkPermission ,create)
-router.delete("/categories/:id",checkPermission, remove)
-router.patch("/categories/:id",checkPermission, update)
+router.route("/categories").get(getAll).post(checkPermission,create)
+router.route("/categories/:id").get(get).delete(checkPermission, remove).patch(checkPermission, update)
 
 export default router;
