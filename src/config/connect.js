@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const connectLocalDB = () => {
   mongoose
-    .connect("mongodb://localhost:27017/portfolio")
+    .connect("mongodb://localhost:27017/new")
     .then(() => console.log("Kết nối thành công"))
     .catch((err) => console.log(err));
 
