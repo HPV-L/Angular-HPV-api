@@ -1,13 +1,11 @@
-import { array } from 'joi';
 import mongoose from 'mongoose';
 import mongooseDelete from 'mongoose-delete';
-// import slugify from 'slugify';
+import mongoosePaginate from 'mongoose-paginate-v2';
 import slug from 'mongoose-slug-generator';
 
-// projectSchema.plugin(slug);
-mongoose.plugin(slug);
+const plugins = [slug,mongoosePaginate, mongooseDelete];
 
-const projectSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -16,19 +14,10 @@ const projectSchema = mongoose.Schema({
         type: String,
         // required: true,
     },
+    price: {
+        type: Number,
+    },
     description: String,
-    link: {
-        type: String,
-        default: ""
-    },
-    linkGithub: {
-        type: String,
-        default: ""
-    },
-    technologyId: [{
-        type: mongoose.Types.ObjectId,
-        ref: "Technology"
-    }],
     categoryId: {
         type: mongoose.Types.ObjectId,
         ref: "Category",
@@ -57,18 +46,12 @@ const projectSchema = mongoose.Schema({
     },
 },{timestamps: true, versionKey: false})
 
-projectSchema.plugin(mongooseDelete, {
-    deletedAt: true,
-    overrideMethods: 'all'
-})
+plugins.forEach((plugin) => {
+    productSchema.plugin(plugin, {
+        deletedAt: true,
+        overrideMethods: true,
+    });
+});
 
 
-// projectSchema.pre("save", function(next) {
-//     this.slug = slugify(this.name, {
-//         lower: true,
-//         strinct: true,
-//     });
-//     next();
-// })
-
-export default mongoose.model('Project', projectSchema);
+export default mongoose.model('Product', productSchema);
