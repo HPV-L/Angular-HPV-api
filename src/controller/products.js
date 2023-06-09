@@ -2,6 +2,7 @@ import Product from "../models/product";
 import Category from "../models/category";
 import { v2 as cloudinary } from "cloudinary";
 import { productSchema } from "../schemas/product";
+import Size from "../models/size";
 
 export const getAll = async (req, res) => {
   const {
@@ -43,7 +44,7 @@ export const get = async (req, res) => {
   try {
     const id = req.params.id;
     const data = await Product.findOne({ _id: id }).populate(
-      "categoryId",
+      "categoryId sizeId",
       "-__v"
     );
     if (!data) {
@@ -83,6 +84,12 @@ export const create = async (req, res) => {
     });
 
     await Category.findOneAndUpdate(data.categoryId, {
+      $addToSet: {
+        products: data._id,
+      },
+    });
+
+    await Size.findOneAndUpdate(data.sizeId, {
       $addToSet: {
         products: data._id,
       },
