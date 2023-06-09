@@ -18,7 +18,7 @@ export const connectOnlDB = () => {
   try {
     // Connect to the MongoDB cluster
     mongoose
-      .connect(mongoAtlasUri, {
+      .connect("mongodb+srv://migu2603:migu2603@phuongtran.blvdm1e.mongodb.net/Angular-HPV?retryWrites=true&w=majority", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })

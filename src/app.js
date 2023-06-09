@@ -21,9 +21,9 @@ app.use("/api", userRouter);
 
 mongoose.set('strictQuery', false);
 // mongodb local
-connectLocalDB();
+// connectLocalDB();
 
 // mongodb onl
-// connectOnlDB();
+connectOnlDB();
 
 export const viteNodeApp = app;
