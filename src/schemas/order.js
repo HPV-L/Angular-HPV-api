@@ -1,7 +1,8 @@
 import Joi, { required } from "joi";
 
 export const orderSchema = Joi.object({
-    user: Joi.string().required().messages({
+  name: Joi.string().required(),
+  idUser: Joi.string().required().messages({
     "string.empty": "Không được bỏ trống khach hang",
     "any.required": "Trường 'khach hang' là bắt buộc",
   }),
@@ -11,6 +12,7 @@ export const orderSchema = Joi.object({
   phone: Joi.number().required().min(0),
   status: Joi.string().required().min(0),
   city: Joi.string(),
+  notes: Joi.string(),
   address: Joi.string().messages({
     "string.empty": "Không được bỏ trống dia chi",
     "any.required": "Trường 'dia chi' là bắt buộc",
