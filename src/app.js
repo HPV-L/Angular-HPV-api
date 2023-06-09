@@ -7,6 +7,8 @@ import productsRouter from "./routes/products";
 import categoriesRouter from "./routes/categories";
 import userRouter from "./routes/auth";
 import sizeRouter from "./routes/size";
+import colorRouter from "./routes/color";
+
 import { connectOnlDB, connectLocalDB } from "./config/connect";
 
 const app = express();
@@ -20,7 +22,7 @@ app.use("/api", productsRouter);
 app.use("/api", categoriesRouter);
 app.use("/api", userRouter);
 app.use("/api", sizeRouter);
-
+app.use("/api", colorRouter);
 
 mongoose.set('strictQuery', false);
 // mongodb local

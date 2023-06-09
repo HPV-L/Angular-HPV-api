@@ -27,6 +27,10 @@ const productSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Size"
     }],
+    colorId:[{
+        type: mongoose.Types.ObjectId,
+        ref: "Color",
+    }],
     createdAt: {
         type: Date,
         default: Date.now,
