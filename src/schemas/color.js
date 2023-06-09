@@ -5,7 +5,7 @@ export const colorSchema = Joi.object({
     "string.empty": "Không được bỏ trống tên",
     "any.required": "Trường 'tên' là bắt buộc",
   }),
-  color: Joi.string().required().messages({
+  hex: Joi.string().required().messages({
     "string.empty": "Không được bỏ trống màu",
     "any.required": "Trường 'màu' là bắt buộc",
   })
