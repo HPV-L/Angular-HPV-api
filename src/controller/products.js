@@ -21,7 +21,7 @@ export const getAll = async (req, res) => {
     : [];
   try {
     const result = await Product.paginate(
-      { categoryId: null },
+      { categoryId: { $exists: true } },
       { ...options, populate: populateOptions }
     );
     if (result.docs.length === 0) throw new Error("No products found");
@@ -137,6 +137,7 @@ export const forceDelete = async (req, res) => {
   }
     await Product.deleteOne({ _id: id });
     // Xóa sản phẩm cũ khỏi danh sách products của category cũ
+    console.log(product._id)
     await Category.findByIdAndUpdate(
       product.categoryId,
       { $pull: { products: product._id } }
@@ -171,6 +172,7 @@ export const update = async (req, res) => {
 
     // Tìm sản phẩm theo id và cập nhật dữ liệu mới
     const productId = req.params.id;
+    const currentProduct = await Product.findById(productId)
     const updatedProduct = await Product.findOneAndUpdate(
       { _id: productId },
       req.body,
@@ -182,7 +184,7 @@ export const update = async (req, res) => {
     }
 
     // Xóa sản phẩm cũ khỏi danh sách products của category cũ
-    const oldCategoryId = updatedProduct.categoryId;
+    const oldCategoryId = currentProduct.categoryId;
     await Category.findByIdAndUpdate(oldCategoryId, {
       $pull: { products: productId },
     });
