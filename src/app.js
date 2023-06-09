@@ -6,6 +6,7 @@ import morgan from "morgan";
 import productsRouter from "./routes/products";
 import categoriesRouter from "./routes/categories";
 import userRouter from "./routes/auth";
+import sizeRouter from "./routes/size";
 import { connectOnlDB, connectLocalDB } from "./config/connect";
 
 const app = express();
@@ -18,6 +19,8 @@ app.use(cors());
 app.use("/api", productsRouter);
 app.use("/api", categoriesRouter);
 app.use("/api", userRouter);
+app.use("/api", sizeRouter);
+
 
 mongoose.set('strictQuery', false);
 // mongodb local
