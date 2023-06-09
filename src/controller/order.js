@@ -6,7 +6,7 @@ export const getAll = async (req, res) => {
         const data = await Order.find().populate("products");
         if (data.length == 0) {
             return res.status(203).json({
-                message: "Không có don hang nào",
+                message: "Không có đơn hàng nào",
             });
         }
         return res.status(200).json(data);
@@ -24,7 +24,7 @@ export const get = async (req, res) => {
         const data = await Order.findById(id).populate("products");
         if (!data) {
             return res.status(200).json({
-                message: "Không có don hang"
+                message: "Không có đơn hàng"
             });
         }
         return res.status(200).json(data);
@@ -47,11 +47,11 @@ export const create = async (req, res) => {
         const  data  = await Order.create(body)
         if (data.length === 0) {
             return res.status(200).json({
-                message: "Thêm don hang thất bại"
+                message: "Thêm đơn hàng thất bại"
             });
         }
         return res.status(200).json({
-            message: "Thêm don hang thành công",
+            message: "Thêm đơn hàng thành công",
             data
         });
     } catch (error) {
@@ -105,4 +105,3 @@ export const update = async (req, res) => {
         })
     }
 }
-
