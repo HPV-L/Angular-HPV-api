@@ -1,33 +1,25 @@
 import mongoose from 'mongoose';
 import mongooseDelete from 'mongoose-delete';
 import mongoosePaginate from 'mongoose-paginate-v2';
-import slug from 'mongoose-slug-generator';
 
-const plugins = [slug,mongoosePaginate, mongooseDelete];
+const plugins = [mongoosePaginate, mongooseDelete];
 
-const productSchema = mongoose.Schema({
+const colorSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
-    thumbnail: {
+    color:{
         type: String,
-        // required: true,
+        required: true,
     },
-    price: {
-        type: Number,
+    products: [
+        {type: mongoose.Types.ObjectId, ref: "Product"}
+    ],
+    isDeleteable: {
+        type: Boolean,
+        default: true
     },
-    description: String,
-    categoryId: {
-        type: mongoose.Types.ObjectId,
-        ref: "Category",
-        required: true
-    },
-    colorId:[{
-        type: mongoose.Types.ObjectId,
-        ref: "Color",
-        required: true
-    }],
     createdAt: {
         type: Date,
         default: Date.now,
@@ -44,19 +36,14 @@ const productSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    slug: { 
-        type: String, 
-        slug: "name",
-        unique: true 
-    },
 },{timestamps: true, versionKey: false})
 
 plugins.forEach((plugin) => {
-    productSchema.plugin(plugin, {
+    colorSchema.plugin(plugin, {
         deletedAt: true,
         overrideMethods: true,
     });
 });
 
 
-export default mongoose.model('Product', productSchema);
+export default mongoose.model('Color', colorSchema);
