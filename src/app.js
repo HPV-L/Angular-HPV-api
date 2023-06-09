@@ -6,6 +6,7 @@ import morgan from "morgan";
 import productsRouter from "./routes/products";
 import categoriesRouter from "./routes/categories";
 import userRouter from "./routes/auth";
+import orderRouter from "./routes/order";
 import sizeRouter from "./routes/size";
 import colorRouter from "./routes/color";
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use("/api", productsRouter);
 app.use("/api", categoriesRouter);
 app.use("/api", userRouter);
+app.use("/api", orderRouter);
 app.use("/api", sizeRouter);
 app.use("/api", colorRouter);
 
