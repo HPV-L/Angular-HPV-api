@@ -23,10 +23,13 @@ const productSchema = mongoose.Schema({
         ref: "Category",
         required: true
     },
+    sizeId:[{
+        type: mongoose.Types.ObjectId,
+        ref: "Size"
+    }],
     colorId:[{
         type: mongoose.Types.ObjectId,
         ref: "Color",
-        required: true
     }],
     createdAt: {
         type: Date,

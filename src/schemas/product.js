@@ -15,9 +15,11 @@ export const productSchema = Joi.object({
     "string.empty": "Không được bỏ trống danh mục",
     "any.required": "Trường 'danh mục' là bắt buộc",
   }),
+  sizeId: Joi.string().messages({
+    "string.empty": "Không được bỏ trống size"
+  }),
   colorId: Joi.string().messages({
     "string.empty": "Không được bỏ trống color",
-    "any.required": "Trường 'color' là bắt buộc",
   }),
   createdAt: Joi.date().default(() => new Date()),
   updatedAt: Joi.date().default(() => new Date()),
