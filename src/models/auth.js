@@ -14,6 +14,12 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    img: {
+        type: String,
+    },
+    sdt: {
+        type: String,
+    },
     role: {
         type: String,
         default: "member"
