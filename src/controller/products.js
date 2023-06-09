@@ -3,6 +3,7 @@ import Category from "../models/category";
 import { v2 as cloudinary } from "cloudinary";
 import { productSchema } from "../schemas/product";
 import Size from "../models/size";
+import Color from "../models/color";
 
 export const getAll = async (req, res) => {
   const {
@@ -22,7 +23,7 @@ export const getAll = async (req, res) => {
     : [];
   try {
     const result = await Product.paginate(
-      { categoryId: { $exists: true } },
+      { categoryId: { $ne: null } },
       { ...options, populate: populateOptions }
     );
     if (result.docs.length === 0) throw new Error("No products found");
@@ -44,7 +45,7 @@ export const get = async (req, res) => {
   try {
     const id = req.params.id;
     const data = await Product.findOne({ _id: id }).populate(
-      "categoryId sizeId",
+      "categoryId sizeId colorId",
       "-__v"
     );
     if (!data) {
@@ -90,6 +91,12 @@ export const create = async (req, res) => {
     });
 
     await Size.findOneAndUpdate(data.sizeId, {
+      $addToSet: {
+        products: data._id,
+      },
+    });
+
+    await Color.findOneAndUpdate(data.colorId, {
       $addToSet: {
         products: data._id,
       },
