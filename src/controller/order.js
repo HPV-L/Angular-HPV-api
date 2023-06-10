@@ -105,3 +105,13 @@ export const update = async (req, res) => {
         })
     }
 }
+
+export const getByIdUser = async (req, res) => {
+    try {
+        const idUser = req.params.idUser;
+        const orders = await Order.find({idUser: idUser});
+    return res.status(200).json(orders);
+    } catch (error) {
+        return res.status(400).json({ message: error.message });
+    }
+}
