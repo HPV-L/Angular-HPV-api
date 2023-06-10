@@ -284,3 +284,12 @@ export const getByColor = async (req, res) => {
       return res.status(400).json({ message: error.message });
   }
 }
+export const getByCategory = async (req, res) => {
+  try {
+      const categoryId = req.params.categoryId;
+      const orders = await Product.find({categoryId: categoryId});
+  return res.status(200).json(orders);
+  } catch (error) {
+      return res.status(400).json({ message: error.message });
+  }
+}
