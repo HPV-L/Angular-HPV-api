@@ -274,3 +274,13 @@ export const getSlug = async (req, res) => {
     });
   }
 };
+
+export const getByColor = async (req, res) => {
+  try {
+      const colorId = req.params.colorId;
+      const orders = await Product.find({colorId: colorId});
+  return res.status(200).json(orders);
+  } catch (error) {
+      return res.status(400).json({ message: error.message });
+  }
+}
