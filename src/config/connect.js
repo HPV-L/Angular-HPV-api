@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const connectLocalDB = () => {
   mongoose
@@ -13,12 +16,12 @@ export const connectLocalDB = () => {
 };
 
 export const connectOnlDB = () => {
-  const mongoAtlasUri = process.env.MONGO_ATLAT_URL;
+  const mongoAtlasUri = process.env.MONGO_ATLAT_URI;
 
   try {
     // Connect to the MongoDB cluster
     mongoose
-      .connect("mongodb+srv://migu2603:migu2603@phuongtran.blvdm1e.mongodb.net/Angular-HPV?retryWrites=true&w=majority", {
+      .connect(mongoAtlasUri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })

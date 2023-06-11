@@ -8,7 +8,7 @@ router.route("/products").get(getAll).post( uploadCloud.single('thumbnail'), cre
 router.route("/products/:id").get(get).patch(checkPermission,update).delete(checkPermission,remove)
 router.patch("/products/restore/:id", checkPermission, restore)
 router.delete("/products/:id/force", checkPermission, forceDelete)
-router.get("/products/:slug", getSlug)
+router.get("/product/:slug", getSlug)
 router.get("/products/color/:colorId", getByColor)
 router.get("/products/category/:categoryId", getByCategory)
 router.get("/admin/products/:id", get)

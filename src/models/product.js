@@ -6,6 +6,7 @@ import slug from 'mongoose-slug-generator';
 const plugins = [slug,mongoosePaginate, mongooseDelete];
 
 const productSchema = mongoose.Schema({
+    code: Number | String,
     name: {
         type: String,
         required: true,
@@ -14,10 +15,17 @@ const productSchema = mongoose.Schema({
         type: String,
         // required: true,
     },
+    quantity: Number,
+    
+    importPrice: Number,
     price: {
         type: Number,
     },
     description: String,
+    status: {
+        type: String,
+        default: "Moi nhap"
+    },
     categoryId: {
         type: mongoose.Types.ObjectId,
         ref: "Category",

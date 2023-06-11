@@ -26,6 +26,7 @@ export const getAll = async (req, res) => {
       { categoryId: { $ne: null } },
       { ...options, populate: populateOptions }
     );
+    console.log(result);
     if (result.docs.length === 0) throw new Error("No products found");
     const response = {
       data: result.docs,
@@ -33,6 +34,8 @@ export const getAll = async (req, res) => {
         currentPage: result.page,
         totalPages: result.totalPages,
         totalItems: result.totalDocs,
+        prevPage: result.prevPage,
+        nextPage: result.nextPage
       },
     };
     return res.status(200).json(response);
@@ -64,6 +67,7 @@ export const get = async (req, res) => {
 export const create = async (req, res) => {
   try {
     const fileData = req.body.thumbnail;
+    console.log(fileData);
     const body = req.body;
     const { error } = productSchema.validate(
       {
@@ -261,7 +265,10 @@ export const getTrash = async (req, res) => {
 export const getSlug = async (req, res) => {
   try {
     const slug = req.params.slug;
-    const data = await Product.findOne({ slug });
+    const data = await Product.findOne({ slug }).populate(
+      "categoryId sizeId colorId",
+      "-__v"
+    );;
     if (!data) {
       return res.status(200).json({
         message: "Không có sản phẩm",
