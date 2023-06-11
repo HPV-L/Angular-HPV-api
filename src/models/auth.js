@@ -20,6 +20,7 @@ const userSchema = mongoose.Schema({
     sdt: {
         type: String,
     },
+    address: String,
     role: {
         type: String,
         default: "member"
