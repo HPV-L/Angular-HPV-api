@@ -7,7 +7,7 @@ export const orderSchema = Joi.object({
     "any.required": "Trường 'khach hang' là bắt buộc",
   }),
   products: Joi.array().required(),
-  quantyti: Joi.number().required().min(0),
+  quantity: Joi.number().required().min(0),
   total: Joi.number().required().min(0),
   phone: Joi.number().required().min(0),
   status: Joi.string().required().min(0),

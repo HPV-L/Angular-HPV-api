@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   allowedFormats: ["jpg", "png", "jpeg"],
   params: {
-    folder: "portfolio",
+    folder: "Angular-HPV",
   },
 });
 

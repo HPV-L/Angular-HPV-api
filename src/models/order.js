@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import mongooseDelete from 'mongoose-delete';
+
 
 const orderSchema = mongoose.Schema({
     idUser: {
@@ -9,7 +11,7 @@ const orderSchema = mongoose.Schema({
     products: [{
         id: { type: mongoose.Schema.Types.ObjectId, required: true },
         name: { type: String, required: true },
-        img: { type: String, required: true },
+        thumbnail: { type: String},
         price: { type: Number, required: true },
         quantity: { type: Number, required: true }
       }],    
@@ -17,7 +19,7 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    quantyti: {
+    quantity: {
         type: Number,
         required: true
     },
@@ -51,7 +53,20 @@ const orderSchema = mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now,
-    }
+    },
+    deletedAt: {
+        type: Date,
+        default: null,
+    },
+    deleted: {
+        type: Boolean,
+        default: false,
+    },
 },{timestamps: true, versionKey: false})
+
+orderSchema.plugin(mongooseDelete, {
+    deletedAt: true,
+    overrideMethods: true
+})
 
 export default mongoose.model('Order', orderSchema);
