@@ -28,8 +28,8 @@ const orderSchema = mongoose.Schema({
         required: true
     },
     status:{
-        type: String,
-        default: "Checking"
+        type: Number,
+        default: 1
     },
     city:{
         type: String,

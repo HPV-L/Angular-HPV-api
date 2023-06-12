@@ -16,14 +16,14 @@ const productSchema = mongoose.Schema({
         // required: true,
     },
     quantity: Number,
-    
+
     importPrice: Number,
     price: {
         type: Number,
     },
     description: String,
     status: {
-        type: String,
+        type: Number,
         default: "Moi nhap"
     },
     categoryId: {
