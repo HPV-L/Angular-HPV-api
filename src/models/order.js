@@ -28,8 +28,9 @@ const orderSchema = mongoose.Schema({
         required: true
     },
     status:{
-        type: Number,
-        default: 1
+        type: mongoose.Types.ObjectId,
+        ref: "Status",
+        // default: 1
     },
     city:{
         type: String,

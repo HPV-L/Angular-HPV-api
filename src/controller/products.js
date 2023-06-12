@@ -24,9 +24,8 @@ export const getAll = async (req, res) => {
   try {
     const result = await Product.paginate(
       { categoryId: { $ne: null } },
-      { ...options, populate: populateOptions }
+      { ...options, populate: {path: "categoryId colorId sizeId"} }
     );
-    console.log(result);
     if (result.docs.length === 0) throw new Error("No products found");
     const response = {
       data: result.docs,
