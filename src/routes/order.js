@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/order/user/:idUser",getByIdUser)
 router.patch("/order/restore/:id",restore)
 router.route("/order").get(getAll).post(create)
-router.route("/order/:id").get(get).patch(update).delete(remove)
+router.route("/order/:id").get(get).patch(checkPermission,update).delete(remove)
 
 export default router;
