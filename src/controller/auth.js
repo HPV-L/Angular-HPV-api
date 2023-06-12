@@ -92,6 +92,24 @@ export const getAll = async (req, res) => {
   }
 };
 
+export const get = async (req, res) => {
+  try {
+      const id = req.params.id;
+      console.log(id);
+      const data = await User.findById(id)
+      if (!data) {
+          return res.status(203).json({
+              message: "Không tìm thấy người dùng"
+          });
+      }
+      return res.status(200).json(data);
+  } catch (error) {
+      return res.status(400).json({
+          message: error,
+      });
+  }
+}
+
 export const update = async (req, res) => {
   try {
     const id = req.params.id;
