@@ -23,7 +23,7 @@ const productSchema = mongoose.Schema({
     },
     description: String,
     status: {
-        type: Number,
+        type: String,
         default: "Moi nhap"
     },
     categoryId: {
