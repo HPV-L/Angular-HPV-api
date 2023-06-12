@@ -9,6 +9,7 @@ import userRouter from "./routes/auth";
 import orderRouter from "./routes/order";
 import sizeRouter from "./routes/size";
 import colorRouter from "./routes/color";
+import statusRouter from "./routes/status";
 
 import { connectOnlDB, connectLocalDB } from "./config/connect";
 
@@ -25,6 +26,7 @@ app.use("/api", userRouter);
 app.use("/api", orderRouter);
 app.use("/api", sizeRouter);
 app.use("/api", colorRouter);
+app.use("/api", statusRouter);
 
 mongoose.set('strictQuery', false);
 // mongodb local

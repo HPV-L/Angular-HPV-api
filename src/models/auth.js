@@ -14,13 +14,22 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    gender: {
+        type: String,
+        default: 'Unknown'
+    },
     img: {
         type: String,
+        default: "https://static1.s123-cdn-static-a.com/uploads/3107639/800_5e9de73574b25.png"
     },
     sdt: {
         type: String,
+        default: "Not update"
     },
-    address: String,
+    address: {
+        type: String,
+        default: "Not update"
+    },
     role: {
         type: String,
         default: "member"
