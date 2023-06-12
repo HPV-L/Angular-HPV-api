@@ -3,39 +3,7 @@ import { orderSchema } from '../schemas/order';
 
 export const getAll = async (req, res) => {
     try {
-        const data = await Order.findWithDeleted().populate("products");
-        if (data.length == 0) {
-            return res.status(203).json({
-                message: "Không có đơn hàng nào",
-            });
-        }
-        return res.status(200).json(data);
-
-    } catch (error) {
-        return res.status(400).json({
-            message: error.message,
-        });
-    }
-}
-export const getNotDeleted = async (req, res) => {
-    try {
-        const data = await Order.find().populate("products");
-        if (data.length == 0) {
-            return res.status(203).json({
-                message: "Không có đơn hàng nào",
-            });
-        }
-        return res.status(200).json(data);
-
-    } catch (error) {
-        return res.status(400).json({
-            message: error.message,
-        });
-    }
-}
-export const getDeleted = async (req, res) => {
-    try {
-        const data = await Order.findDeleted().populate("products");
+        const data = await Order.find().populate("products idUser status");
         if (data.length == 0) {
             return res.status(203).json({
                 message: "Không có đơn hàng nào",
@@ -53,7 +21,7 @@ export const getDeleted = async (req, res) => {
 export const get = async (req, res) => {
     try {
         const id = req.params.id;
-        const data = await Order.findById(id).populate("products");
+        const data = await Order.findById(id).populate("products status idUser");
         if (!data) {
             return res.status(200).json({
                 message: "Không có đơn hàng"
