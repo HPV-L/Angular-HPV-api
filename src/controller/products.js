@@ -4,6 +4,7 @@ import { v2 as cloudinary } from "cloudinary";
 import { productSchema } from "../schemas/product";
 import Size from "../models/size";
 import Color from "../models/color";
+import Comment from "../models/comment";
 
 export const getAll = async (req, res) => {
   const {
@@ -50,12 +51,13 @@ export const get = async (req, res) => {
       "categoryId sizeId colorId",
       "-__v"
     );
+    const comment = await Comment.find({ _id: id })
     if (!data) {
       return res.status(200).json({
         message: "Không có sản phẩm",
       });
     }
-    return res.status(200).json(data);
+    return res.status(200).json(data,comment);
   } catch (error) {
     return res.status(400).json({
       message: error.message,
@@ -265,7 +267,7 @@ export const getSlug = async (req, res) => {
   try {
     const slug = req.params.slug;
     const data = await Product.findOne({ slug }).populate(
-      "categoryId sizeId colorId",
+      "categoryId sizeId colorId commentId",
       "-__v"
     );;
     if (!data) {
