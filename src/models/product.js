@@ -39,6 +39,10 @@ const productSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Color",
     }],
+    commentId:[{
+        type: mongoose.Types.ObjectId,
+        ref: "Comment",
+    }],
     createdAt: {
         type: Date,
         default: Date.now,
