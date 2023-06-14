@@ -4,7 +4,7 @@ import Comment from "../models/comment"
 export const create = async (req, res) => {
     try {
         const comment = await new Comment(req.body).save();
-        res.json(comment)
+        res.json({message: "Thêm bình luận thành công",comment})
     } catch (error) {
         console.log(error);
         res.status(400).json(
@@ -17,7 +17,7 @@ export const getAll = async (req, res) => {
     try {
       const comments = await Comment.find().populate({
         path: 'productId',
-        select: 'name',
+        select: 'name thumbnail',
       }).populate({
         path: 'idUser',
         select: 'username email img',
@@ -36,10 +36,16 @@ export const getAll = async (req, res) => {
 export const getbyProduct = async (req, res) => {
     const { productId } = req.params;
     try {
-        const comments = await Comment.find({ productId: productId }).populate({
+        const comments = await Comment.find({ productId: productId }).populate(
+          {
             path: 'idUser',
             select: 'username email img',
-        });
+          }
+        ).populate(
+          {
+            path: 'productId',
+            select: 'name thumbnail',
+          })
         if (!comments) {
             return res.status(404).json({
                 message: 'Không tìm thấy bình luận',
