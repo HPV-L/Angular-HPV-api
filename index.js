@@ -3,16 +3,16 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import morgan from "morgan";
-import productsRouter from "./routes/products.js";
-import categoriesRouter from "./routes/categories.js";
-import userRouter from "./routes/auth.js";
-import orderRouter from "./routes/order.js";
-import sizeRouter from "./routes/size.js";
-import colorRouter from "./routes/color.js";
-import statusRouter from "./routes/status.js";
-import commentRouter from "./routes/comment.js";
+import productsRouter from "./src/routes/products.js";
+import categoriesRouter from "./src/routes/categories.js";
+import userRouter from "./src/routes/auth.js";
+import orderRouter from "./src/routes/order.js";
+import sizeRouter from "./src/routes/size.js";
+import colorRouter from "./src/routes/color.js";
+import statusRouter from "./src/routes/status.js";
+import commentRouter from "./src/routes/comment.js";
 
-import { connectOnlDB, connectLocalDB } from "./config/connect.js";
+import { connectOnlDB, connectLocalDB } from "./src/config/connect.js";
 
 const app = express();
 const port = 8080
