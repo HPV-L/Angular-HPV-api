@@ -1,7 +1,7 @@
 import express from 'express';
-import { create, get, getAll, remove, update, getSlug, getTrash, restore, forceDelete, getByColor, getByCategory } from '../controller/products'
-import { checkPermission } from '../middlewares/checkPermission';
-import uploadCloud from '../middlewares/cloudinary';
+import { create, get, getAll, remove, update, getSlug, getTrash, restore, forceDelete, getByColor, getByCategory } from '../controller/products.js'
+import { checkPermission } from '../middlewares/checkPermission.js';
+import uploadCloud from '../middlewares/cloudinary.js';
 
 const router = express.Router();
 router.route("/products").get(getAll).post( uploadCloud.single('thumbnail'), create)

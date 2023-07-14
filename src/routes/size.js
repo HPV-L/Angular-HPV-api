@@ -1,4 +1,4 @@
-import { create, get, getAll, remove, update } from '../controller/size'
+import { create, get, getAll, remove, update } from '../controller/size.js'
 import express from 'express';
 
 const router = express.Router();

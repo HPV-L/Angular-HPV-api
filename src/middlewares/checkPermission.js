@@ -1,4 +1,4 @@
-import User from '../models/auth';
+import User from '../models/auth.js';
 import jwt from 'jsonwebtoken';
 
 export const checkPermission = async (req, res, next) => {

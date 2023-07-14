@@ -1,5 +1,5 @@
-import Color from '../models/color';
-import { colorSchema } from '../schemas/color';
+import Color from '../models/color.js';
+import { colorSchema } from '../schemas/color.js';
 
 export const getAll = async (req, res) => {
     try {

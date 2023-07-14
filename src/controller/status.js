@@ -1,4 +1,4 @@
-import Status from '../models/status';
+import Status from '../models/status.js';
 
 export const getAll = async (req, res) => {
     try {

@@ -1,5 +1,5 @@
-import Size from '../models/size';
-import { sizeSchema } from '../schemas/size';
+import Size from '../models/size.js';
+import { sizeSchema } from '../schemas/size.js';
 
 export const getAll = async (req, res) => {
     try {

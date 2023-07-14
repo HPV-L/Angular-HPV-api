@@ -1,6 +1,6 @@
 import express from "express";
-import { create, forceDelete, getAll, getbyProduct, getOneComment, remove, update } from "../controller/comment";
-import { checkPermission } from "../middlewares/checkPermission";
+import { create, forceDelete, getAll, getbyProduct, getOneComment, remove, update } from "../controller/comment.js";
+import { checkPermission } from "../middlewares/checkPermission.js";
 
 const router = express.Router();
 

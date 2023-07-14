@@ -1,4 +1,4 @@
-import Joi, { required } from "joi";
+import Joi from "joi";
 
 export const orderSchema = Joi.object({
   name: Joi.string().required(),

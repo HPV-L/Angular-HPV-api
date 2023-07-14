@@ -1,4 +1,4 @@
-import { get, getAll } from '../controller/status'
+import { get, getAll } from '../controller/status.js'
 import express from 'express';
 
 const router = express.Router();

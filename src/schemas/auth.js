@@ -1,4 +1,4 @@
-import Joi, { ref } from "joi";
+import Joi from "joi";
 export const signupSchema = Joi.object({
   username: Joi.string().required().messages({
     "string.empty": "Khong duoc bo trong ten dang nhap",

@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "dev": "vite"
+    "dev": "node src/index.js"
   },
   "keywords": [],
   "author": "",

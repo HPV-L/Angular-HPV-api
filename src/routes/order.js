@@ -1,5 +1,5 @@
-import { create, get, getAll, getByIdUser, remove, restore, update } from '../controller/order'
-import { checkPermission } from '../middlewares/checkPermission';
+import { create, get, getAll, getByIdUser, remove, restore, update } from '../controller/order.js'
+import { checkPermission } from '../middlewares/checkPermission.js';
 import express from 'express';
 
 const router = express.Router();

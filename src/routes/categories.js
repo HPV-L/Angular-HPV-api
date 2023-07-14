@@ -1,5 +1,5 @@
-import { create, get, getAll, remove, update } from '../controller/categories'
-import { checkPermission } from '../middlewares/checkPermission';
+import { create, get, getAll, remove, update } from '../controller/categories.js'
+import { checkPermission } from '../middlewares/checkPermission.js';
 import express from 'express';
 
 const router = express.Router();

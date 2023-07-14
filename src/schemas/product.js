@@ -1,4 +1,4 @@
-import Joi, { required } from "joi";
+import Joi from "joi";
 
 export const productSchema = Joi.object({
   code: Joi.string(),

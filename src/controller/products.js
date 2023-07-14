@@ -1,10 +1,10 @@
-import Product from "../models/product";
-import Category from "../models/category";
+import Product from "../models/product.js";
+import Category from "../models/category.js";
 import { v2 as cloudinary } from "cloudinary";
-import { productSchema } from "../schemas/product";
-import Size from "../models/size";
-import Color from "../models/color";
-import Comment from "../models/comment";
+import { productSchema } from "../schemas/product.js";
+import Size from "../models/size.js";
+import Color from "../models/color.js";
+import Comment from "../models/comment.js";
 
 export const getAll = async (req, res) => {
   const {
